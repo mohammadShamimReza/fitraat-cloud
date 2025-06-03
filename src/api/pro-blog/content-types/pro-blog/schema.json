@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pro_blogs",
+  "info": {
+    "singularName": "pro-blog",
+    "pluralName": "pro-blogs",
+    "displayName": "proBlog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "topic": {
+      "type": "string"
+    },
+    "titile": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "viewCount": {
+      "type": "biginteger"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
