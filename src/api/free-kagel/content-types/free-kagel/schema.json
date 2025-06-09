@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "free_kagels",
+  "info": {
+    "singularName": "free-kagel",
+    "pluralName": "free-kagels",
+    "displayName": "freeKagel"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "dayId": {
+      "type": "integer"
+    }
+  }
+}

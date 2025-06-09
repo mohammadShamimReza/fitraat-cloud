@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_kagel_kagel_times",
+  "info": {
+    "displayName": "kagelTime",
+    "icon": "walk",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "serial": {
+      "type": "string"
+    },
+    "times": {
+      "displayName": "squizzAndStop",
+      "type": "component",
+      "repeatable": true,
+      "component": "kagel.squizz-and-stop"
+    },
+    "gap": {
+      "type": "integer"
+    }
+  }
+}

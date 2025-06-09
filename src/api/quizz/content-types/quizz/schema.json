@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quizzes",
+  "info": {
+    "singularName": "quizz",
+    "pluralName": "quizzes",
+    "displayName": "quizz",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "dayId": {
+      "type": "string"
+    },
+    "quizzess": {
+      "type": "component",
+      "repeatable": true,
+      "component": "quiz.quiz-content"
+    }
+  }
+}

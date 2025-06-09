@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_kagel_squizz_and_stops",
+  "info": {
+    "displayName": "squizzAndStop",
+    "icon": "volumeMute"
+  },
+  "options": {},
+  "attributes": {
+    "squizz": {
+      "type": "integer"
+    },
+    "stop": {
+      "type": "integer"
+    }
+  }
+}

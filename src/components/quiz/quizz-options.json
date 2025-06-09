@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_quiz_quizz_options",
+  "info": {
+    "displayName": "quizz-options"
+  },
+  "options": {},
+  "attributes": {
+    "opiotn1": {
+      "type": "text"
+    },
+    "optoin2": {
+      "type": "text"
+    },
+    "option3": {
+      "type": "text"
+    },
+    "optoin4": {
+      "type": "text"
+    }
+  }
+}

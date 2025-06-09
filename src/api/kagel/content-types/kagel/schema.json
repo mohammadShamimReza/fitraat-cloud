@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kagels",
+  "info": {
+    "singularName": "kagel",
+    "pluralName": "kagels",
+    "displayName": "proKagel",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "kagelTimes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "kagel.kagel-time"
+    },
+    "dayId": {
+      "type": "integer"
+    }
+  }
+}

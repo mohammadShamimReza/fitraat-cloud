@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "freedays",
+  "info": {
+    "singularName": "freeday",
+    "pluralName": "freedays",
+    "displayName": "freeday"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "requlerVideo": {
+      "type": "customField",
+      "customField": "plugin::video-field.video"
+    },
+    "free_blog": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::free-blog.free-blog"
+    },
+    "kagel": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::kagel.kagel"
+    },
+    "quizz": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::quizz.quizz"
+    },
+    "meditationVideo": {
+      "type": "customField",
+      "customField": "plugin::video-field.video"
+    }
+  }
+}
