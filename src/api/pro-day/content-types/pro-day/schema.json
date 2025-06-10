@@ -1,34 +1,36 @@
 {
   "kind": "collectionType",
-  "collectionName": "freedays",
+  "collectionName": "pro_days",
   "info": {
-    "singularName": "freeday",
-    "pluralName": "freedays",
-    "displayName": "freeDay",
-    "description": ""
+    "singularName": "pro-day",
+    "pluralName": "pro-days",
+    "displayName": "ProDay"
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
+    "dayId": {
+      "type": "integer"
+    },
     "requlerVideo": {
       "type": "customField",
       "customField": "plugin::video-field.video"
     },
-    "freeBlog": {
+    "pro_blog": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::free-blog.free-blog"
+      "target": "api::pro-blog.pro-blog"
     },
-    "free_kagel": {
+    "pro_kagel": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::free-kagel.free-kagel"
+      "target": "api::kagel.kagel"
     },
-    "free_quizz": {
+    "pro_quizz": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::free-quizz.free-quizz"
+      "target": "api::quizz.quizz"
     },
     "meditationVideo": {
       "type": "customField",

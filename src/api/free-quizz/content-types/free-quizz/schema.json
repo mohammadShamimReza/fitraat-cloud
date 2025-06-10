@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "free_kagels",
+  "collectionName": "free_quizzes",
   "info": {
-    "singularName": "free-kagel",
-    "pluralName": "free-kagels",
-    "displayName": "freeKagel",
-    "description": ""
+    "singularName": "free-quizz",
+    "pluralName": "free-quizzes",
+    "displayName": "freeQuizz"
   },
   "options": {
     "draftAndPublish": true
@@ -14,10 +13,10 @@
     "dayId": {
       "type": "integer"
     },
-    "kagelTimes": {
+    "quizzess": {
       "type": "component",
       "repeatable": true,
-      "component": "kagel.kagel-time"
+      "component": "quiz.quiz-content"
     }
   }
 }

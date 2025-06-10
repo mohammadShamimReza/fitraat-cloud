@@ -369,6 +369,38 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDoctorDoctor extends Struct.CollectionTypeSchema {
+  collectionName: 'doctors';
+  info: {
+    displayName: 'Doctor';
+    pluralName: 'doctors';
+    singularName: 'doctor';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contact: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fee: Schema.Attribute.Integer;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::doctor.doctor'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    specialist: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEmergencyEmergency extends Struct.CollectionTypeSchema {
   collectionName: 'emergencies';
   info: {
@@ -397,6 +429,32 @@ export interface ApiEmergencyEmergency extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     video: Schema.Attribute.JSON &
       Schema.Attribute.CustomField<'plugin::video-field.video'>;
+  };
+}
+
+export interface ApiFaqFaq extends Struct.SingleTypeSchema {
+  collectionName: 'faqs';
+  info: {
+    displayName: 'faq';
+    pluralName: 'faqs';
+    singularName: 'faq';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    answer: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    question: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -434,6 +492,7 @@ export interface ApiFreeBlogFreeBlog extends Struct.CollectionTypeSchema {
 export interface ApiFreeKagelFreeKagel extends Struct.CollectionTypeSchema {
   collectionName: 'free_kagels';
   info: {
+    description: '';
     displayName: 'freeKagel';
     pluralName: 'free-kagels';
     singularName: 'free-kagel';
@@ -446,6 +505,7 @@ export interface ApiFreeKagelFreeKagel extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     dayId: Schema.Attribute.Integer;
+    kagelTimes: Schema.Attribute.Component<'kagel.kagel-time', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -459,10 +519,40 @@ export interface ApiFreeKagelFreeKagel extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFreeQuizzFreeQuizz extends Struct.CollectionTypeSchema {
+  collectionName: 'free_quizzes';
+  info: {
+    displayName: 'freeQuizz';
+    pluralName: 'free-quizzes';
+    singularName: 'free-quizz';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dayId: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::free-quizz.free-quizz'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    quizzess: Schema.Attribute.Component<'quiz.quiz-content', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFreedayFreeday extends Struct.CollectionTypeSchema {
   collectionName: 'freedays';
   info: {
-    displayName: 'freeday';
+    description: '';
+    displayName: 'freeDay';
     pluralName: 'freedays';
     singularName: 'freeday';
   };
@@ -473,11 +563,15 @@ export interface ApiFreedayFreeday extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    free_blog: Schema.Attribute.Relation<
+    free_kagel: Schema.Attribute.Relation<
       'oneToOne',
-      'api::free-blog.free-blog'
+      'api::free-kagel.free-kagel'
     >;
-    kagel: Schema.Attribute.Relation<'oneToOne', 'api::kagel.kagel'>;
+    free_quizz: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::free-quizz.free-quizz'
+    >;
+    freeBlog: Schema.Attribute.Relation<'oneToOne', 'api::free-blog.free-blog'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -487,7 +581,6 @@ export interface ApiFreedayFreeday extends Struct.CollectionTypeSchema {
     meditationVideo: Schema.Attribute.JSON &
       Schema.Attribute.CustomField<'plugin::video-field.video'>;
     publishedAt: Schema.Attribute.DateTime;
-    quizz: Schema.Attribute.Relation<'oneToOne', 'api::quizz.quizz'>;
     requlerVideo: Schema.Attribute.JSON &
       Schema.Attribute.CustomField<'plugin::video-field.video'>;
     updatedAt: Schema.Attribute.DateTime;
@@ -555,11 +648,46 @@ export interface ApiProBlogProBlog extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiProDayProDay extends Struct.CollectionTypeSchema {
+  collectionName: 'pro_days';
+  info: {
+    displayName: 'ProDay';
+    pluralName: 'pro-days';
+    singularName: 'pro-day';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dayId: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pro-day.pro-day'
+    > &
+      Schema.Attribute.Private;
+    meditationVideo: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<'plugin::video-field.video'>;
+    pro_blog: Schema.Attribute.Relation<'oneToOne', 'api::pro-blog.pro-blog'>;
+    pro_kagel: Schema.Attribute.Relation<'oneToOne', 'api::kagel.kagel'>;
+    pro_quizz: Schema.Attribute.Relation<'oneToOne', 'api::quizz.quizz'>;
+    publishedAt: Schema.Attribute.DateTime;
+    requlerVideo: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<'plugin::video-field.video'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiQuizzQuizz extends Struct.CollectionTypeSchema {
   collectionName: 'quizzes';
   info: {
     description: '';
-    displayName: 'quizz';
+    displayName: 'proQuizz';
     pluralName: 'quizzes';
     singularName: 'quizz';
   };
@@ -1037,20 +1165,25 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
+    age: Schema.Attribute.Integer;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    currentDay: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    fitraatPayment: Schema.Attribute.Enumeration<['Complete', 'Not complete']> &
+      Schema.Attribute.DefaultTo<'Not complete'>;
+    gender: Schema.Attribute.Enumeration<['male', 'female']>;
+    kagelComplete: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1062,13 +1195,16 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    phone: Schema.Attribute.BigInteger;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    quizComplete: Schema.Attribute.Boolean;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
     role: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    startDate: Schema.Attribute.Date;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1078,6 +1214,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 3;
       }>;
+    videoComplete: Schema.Attribute.Boolean;
   };
 }
 
@@ -1091,12 +1228,16 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::doctor.doctor': ApiDoctorDoctor;
       'api::emergency.emergency': ApiEmergencyEmergency;
+      'api::faq.faq': ApiFaqFaq;
       'api::free-blog.free-blog': ApiFreeBlogFreeBlog;
       'api::free-kagel.free-kagel': ApiFreeKagelFreeKagel;
+      'api::free-quizz.free-quizz': ApiFreeQuizzFreeQuizz;
       'api::freeday.freeday': ApiFreedayFreeday;
       'api::kagel.kagel': ApiKagelKagel;
       'api::pro-blog.pro-blog': ApiProBlogProBlog;
+      'api::pro-day.pro-day': ApiProDayProDay;
       'api::quizz.quizz': ApiQuizzQuizz;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
