@@ -12,12 +12,14 @@
   },
   "attributes": {
     "dayId": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "kagelTimes": {
       "type": "component",
       "repeatable": true,
-      "component": "kagel.kagel-time"
+      "component": "kagel.kagel-time",
+      "required": true
     }
   }
 }

@@ -27,12 +27,20 @@
       "target": "api::free-quizz.free-quizz"
     },
     "regulerVideo": {
-      "type": "customField",
-      "customField": "plugin::oembed.oembed"
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     },
     "meditationVideo": {
-      "type": "customField",
-      "customField": "plugin::oembed.oembed"
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }

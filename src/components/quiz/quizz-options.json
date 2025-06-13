@@ -1,21 +1,26 @@
 {
   "collectionName": "components_quiz_quizz_options",
   "info": {
-    "displayName": "quizz-options"
+    "displayName": "quizz-options",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "opiotn1": {
-      "type": "text"
+      "type": "string",
+      "required": true
     },
     "optoin2": {
-      "type": "text"
+      "type": "string",
+      "required": true
     },
     "option3": {
-      "type": "text"
+      "type": "string",
+      "required": true
     },
     "optoin4": {
-      "type": "text"
+      "type": "string",
+      "required": true
     }
   }
 }

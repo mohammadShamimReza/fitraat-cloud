@@ -4,30 +4,38 @@
   "info": {
     "singularName": "free-blog",
     "pluralName": "free-blogs",
-    "displayName": "freeBlog"
+    "displayName": "freeBlog",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "topic": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+        "files"
+      ]
     },
     "content": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
+    },
+    "tag": {
+      "type": "string",
+      "default": "free",
+      "required": true
     }
   }
 }

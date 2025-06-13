@@ -12,11 +12,16 @@
   },
   "attributes": {
     "message": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "video": {
-      "type": "customField",
-      "customField": "plugin::oembed.oembed"
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }

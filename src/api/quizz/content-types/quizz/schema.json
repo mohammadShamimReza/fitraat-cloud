@@ -12,12 +12,14 @@
   },
   "attributes": {
     "dayId": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "quizzess": {
       "type": "component",
       "repeatable": true,
-      "component": "quiz.quiz-content"
+      "component": "quiz.quiz-content",
+      "required": true
     }
   }
 }

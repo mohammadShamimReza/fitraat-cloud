@@ -9,16 +9,20 @@
     "options": {
       "type": "component",
       "repeatable": false,
-      "component": "quiz.quizz-options"
+      "component": "quiz.quizz-options",
+      "required": true
     },
     "question": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "answer": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "serial": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     }
   }
 }

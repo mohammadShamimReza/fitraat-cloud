@@ -8,16 +8,20 @@
   "options": {},
   "attributes": {
     "serial": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "times": {
       "displayName": "squizzAndStop",
       "type": "component",
       "repeatable": true,
-      "component": "kagel.squizz-and-stop"
+      "component": "kagel.squizz-and-stop",
+      "required": true
     },
     "gap": {
-      "type": "integer"
+      "type": "integer",
+      "required": true,
+      "default": 30
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "pro-blog",
     "pluralName": "pro-blogs",
-    "displayName": "proBlog"
+    "displayName": "proBlog",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,20 +18,23 @@
       "type": "string"
     },
     "image": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "viewCount": {
       "type": "biginteger"
     },
     "content": {
       "type": "richtext"
+    },
+    "tag": {
+      "type": "string",
+      "default": "pro",
+      "required": true
     }
   }
 }

@@ -14,7 +14,8 @@
     "kagelTimes": {
       "type": "component",
       "repeatable": true,
-      "component": "kagel.kagel-time"
+      "component": "kagel.kagel-time",
+      "required": true
     },
     "dayId": {
       "type": "integer"

@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiDoctorDoctor extends Struct.CollectionTypeSchema {
   collectionName: 'doctors';
   info: {
+    description: '';
     displayName: 'Doctor';
     pluralName: 'doctors';
     singularName: 'doctor';
@@ -380,21 +381,21 @@ export interface ApiDoctorDoctor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    contact: Schema.Attribute.RichText;
+    contact: Schema.Attribute.RichText & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    fee: Schema.Attribute.Integer;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    fee: Schema.Attribute.Integer & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::doctor.doctor'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    specialist: Schema.Attribute.String;
+    specialist: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -422,19 +423,19 @@ export interface ApiEmergencyEmergency extends Struct.CollectionTypeSchema {
       'api::emergency.emergency'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.Text;
+    message: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    video: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
+    video: Schema.Attribute.Media<'videos'> & Schema.Attribute.Required;
   };
 }
 
 export interface ApiFaqFaq extends Struct.SingleTypeSchema {
   collectionName: 'faqs';
   info: {
+    description: '';
     displayName: 'faq';
     pluralName: 'faqs';
     singularName: 'faq';
@@ -443,7 +444,7 @@ export interface ApiFaqFaq extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    answer: Schema.Attribute.Blocks;
+    answer: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -451,7 +452,7 @@ export interface ApiFaqFaq extends Struct.SingleTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    question: Schema.Attribute.Text;
+    question: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -461,6 +462,7 @@ export interface ApiFaqFaq extends Struct.SingleTypeSchema {
 export interface ApiFreeBlogFreeBlog extends Struct.CollectionTypeSchema {
   collectionName: 'free_blogs';
   info: {
+    description: '';
     displayName: 'freeBlog';
     pluralName: 'free-blogs';
     singularName: 'free-blog';
@@ -469,11 +471,12 @@ export interface ApiFreeBlogFreeBlog extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    content: Schema.Attribute.RichText;
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    image: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -481,8 +484,11 @@ export interface ApiFreeBlogFreeBlog extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    topic: Schema.Attribute.String;
+    tag: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'free'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    topic: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -504,8 +510,9 @@ export interface ApiFreeKagelFreeKagel extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer;
-    kagelTimes: Schema.Attribute.Component<'kagel.kagel-time', true>;
+    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    kagelTimes: Schema.Attribute.Component<'kagel.kagel-time', true> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -578,11 +585,10 @@ export interface ApiFreedayFreeday extends Struct.CollectionTypeSchema {
       'api::freeday.freeday'
     > &
       Schema.Attribute.Private;
-    meditationVideo: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
+    meditationVideo: Schema.Attribute.Media<'videos'> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    regulerVideo: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
+    regulerVideo: Schema.Attribute.Media<'videos'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -605,7 +611,8 @@ export interface ApiKagelKagel extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     dayId: Schema.Attribute.Integer;
-    kagelTimes: Schema.Attribute.Component<'kagel.kagel-time', true>;
+    kagelTimes: Schema.Attribute.Component<'kagel.kagel-time', true> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::kagel.kagel'> &
       Schema.Attribute.Private;
@@ -619,6 +626,7 @@ export interface ApiKagelKagel extends Struct.CollectionTypeSchema {
 export interface ApiProBlogProBlog extends Struct.CollectionTypeSchema {
   collectionName: 'pro_blogs';
   info: {
+    description: '';
     displayName: 'proBlog';
     pluralName: 'pro-blogs';
     singularName: 'pro-blog';
@@ -631,7 +639,7 @@ export interface ApiProBlogProBlog extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -639,6 +647,9 @@ export interface ApiProBlogProBlog extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    tag: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'pro'>;
     titile: Schema.Attribute.String;
     topic: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -699,12 +710,13 @@ export interface ApiQuizzQuizz extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.String;
+    dayId: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::quizz.quizz'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    quizzess: Schema.Attribute.Component<'quiz.quiz-content', true>;
+    quizzess: Schema.Attribute.Component<'quiz.quiz-content', true> &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -714,6 +726,7 @@ export interface ApiQuizzQuizz extends Struct.CollectionTypeSchema {
 export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
   collectionName: 'subscribers';
   info: {
+    description: '';
     displayName: 'subscriber';
     pluralName: 'subscribers';
     singularName: 'subscriber';
@@ -725,7 +738,7 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

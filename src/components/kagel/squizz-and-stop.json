@@ -2,15 +2,18 @@
   "collectionName": "components_kagel_squizz_and_stops",
   "info": {
     "displayName": "squizzAndStop",
-    "icon": "volumeMute"
+    "icon": "volumeMute",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "squizz": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "stop": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     }
   }
 }
