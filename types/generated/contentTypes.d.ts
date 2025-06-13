@@ -428,7 +428,7 @@ export interface ApiEmergencyEmergency extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     video: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::video-field.video'>;
+      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
   };
 }
 
@@ -579,10 +579,10 @@ export interface ApiFreedayFreeday extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     meditationVideo: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::video-field.video'>;
+      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
     publishedAt: Schema.Attribute.DateTime;
-    requlerVideo: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::video-field.video'>;
+    regulerVideo: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -651,6 +651,7 @@ export interface ApiProBlogProBlog extends Struct.CollectionTypeSchema {
 export interface ApiProDayProDay extends Struct.CollectionTypeSchema {
   collectionName: 'pro_days';
   info: {
+    description: '';
     displayName: 'ProDay';
     pluralName: 'pro-days';
     singularName: 'pro-day';
@@ -670,13 +671,13 @@ export interface ApiProDayProDay extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     meditationVideo: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::video-field.video'>;
+      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
     pro_blog: Schema.Attribute.Relation<'oneToOne', 'api::pro-blog.pro-blog'>;
     pro_kagel: Schema.Attribute.Relation<'oneToOne', 'api::kagel.kagel'>;
     pro_quizz: Schema.Attribute.Relation<'oneToOne', 'api::quizz.quizz'>;
     publishedAt: Schema.Attribute.DateTime;
-    requlerVideo: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::video-field.video'>;
+    regulerVideo: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1224,6 +1225,9 @@ export interface PluginUsersPermissionsUser
         minLength: 6;
       }>;
     phone: Schema.Attribute.BigInteger;
+    profileImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     quizComplete: Schema.Attribute.Boolean;

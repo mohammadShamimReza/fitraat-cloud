@@ -4,7 +4,7 @@ export interface KagelKagelTime extends Struct.ComponentSchema {
   collectionName: 'components_kagel_kagel_times';
   info: {
     description: '';
-    displayName: 'kagelTime';
+    displayName: 'kagelContent';
     icon: 'walk';
   };
   attributes: {

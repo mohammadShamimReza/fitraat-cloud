@@ -4,7 +4,8 @@
   "info": {
     "singularName": "pro-day",
     "pluralName": "pro-days",
-    "displayName": "ProDay"
+    "displayName": "ProDay",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,10 +13,6 @@
   "attributes": {
     "dayId": {
       "type": "integer"
-    },
-    "requlerVideo": {
-      "type": "customField",
-      "customField": "plugin::video-field.video"
     },
     "pro_blog": {
       "type": "relation",
@@ -34,7 +31,11 @@
     },
     "meditationVideo": {
       "type": "customField",
-      "customField": "plugin::video-field.video"
+      "customField": "plugin::oembed.oembed"
+    },
+    "regulerVideo": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
     }
   }
 }

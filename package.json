@@ -12,7 +12,6 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@sklinet/strapi-plugin-video-field": "^1.1.1",
     "@strapi/plugin-cloud": "5.11.0",
     "@strapi/plugin-users-permissions": "5.11.0",
     "@strapi/strapi": "5.11.0",
@@ -23,6 +22,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-plugin-oembed": "^2.0.1",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {},

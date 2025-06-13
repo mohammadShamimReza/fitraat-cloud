@@ -16,7 +16,7 @@
     },
     "video": {
       "type": "customField",
-      "customField": "plugin::video-field.video"
+      "customField": "plugin::oembed.oembed"
     }
   }
 }

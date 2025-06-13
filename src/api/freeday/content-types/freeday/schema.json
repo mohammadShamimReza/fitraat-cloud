@@ -11,10 +11,6 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "requlerVideo": {
-      "type": "customField",
-      "customField": "plugin::video-field.video"
-    },
     "freeBlog": {
       "type": "relation",
       "relation": "oneToOne",
@@ -30,9 +26,13 @@
       "relation": "oneToOne",
       "target": "api::free-quizz.free-quizz"
     },
+    "regulerVideo": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
+    },
     "meditationVideo": {
       "type": "customField",
-      "customField": "plugin::video-field.video"
+      "customField": "plugin::oembed.oembed"
     }
   }
 }

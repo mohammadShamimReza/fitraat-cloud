@@ -101,6 +101,16 @@
         "Not complete"
       ],
       "default": "Not complete"
+    },
+    "profileImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
