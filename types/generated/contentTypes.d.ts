@@ -423,8 +423,8 @@ export interface ApiEmergencyEmergency extends Struct.CollectionTypeSchema {
       'api::emergency.emergency'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.Blocks & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    qute: Schema.Attribute.Blocks & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

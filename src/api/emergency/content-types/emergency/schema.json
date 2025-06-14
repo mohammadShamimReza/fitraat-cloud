@@ -19,7 +19,7 @@
         "videos"
       ]
     },
-    "message": {
+    "qute": {
       "type": "blocks",
       "required": true
     }
