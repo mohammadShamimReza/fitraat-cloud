@@ -423,7 +423,7 @@ export interface ApiEmergencyEmergency extends Struct.CollectionTypeSchema {
       'api::emergency.emergency'
     > &
       Schema.Attribute.Private;
-    message: Schema.Attribute.Text & Schema.Attribute.Required;
+    message: Schema.Attribute.Blocks & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -681,14 +681,13 @@ export interface ApiProDayProDay extends Struct.CollectionTypeSchema {
       'api::pro-day.pro-day'
     > &
       Schema.Attribute.Private;
-    meditationVideo: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
+    meditationVideo: Schema.Attribute.Media<'videos'> &
+      Schema.Attribute.Required;
     pro_blog: Schema.Attribute.Relation<'oneToOne', 'api::pro-blog.pro-blog'>;
     pro_kagel: Schema.Attribute.Relation<'oneToOne', 'api::kagel.kagel'>;
     pro_quizz: Schema.Attribute.Relation<'oneToOne', 'api::quizz.quizz'>;
     publishedAt: Schema.Attribute.DateTime;
-    regulerVideo: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
+    regulerVideo: Schema.Attribute.Media<'videos'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

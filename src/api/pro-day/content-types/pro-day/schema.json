@@ -29,13 +29,21 @@
       "relation": "oneToOne",
       "target": "api::quizz.quizz"
     },
-    "meditationVideo": {
-      "type": "customField",
-      "customField": "plugin::oembed.oembed"
-    },
     "regulerVideo": {
-      "type": "customField",
-      "customField": "plugin::oembed.oembed"
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "meditationVideo": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }
