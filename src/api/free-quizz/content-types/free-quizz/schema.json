@@ -4,14 +4,16 @@
   "info": {
     "singularName": "free-quizz",
     "pluralName": "free-quizzes",
-    "displayName": "freeQuizz"
+    "displayName": "freeQuizz",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "dayId": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "quizzess": {
       "type": "component",

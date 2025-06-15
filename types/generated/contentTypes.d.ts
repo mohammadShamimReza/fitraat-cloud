@@ -475,6 +475,7 @@ export interface ApiFreeBlogFreeBlog extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -529,6 +530,7 @@ export interface ApiFreeKagelFreeKagel extends Struct.CollectionTypeSchema {
 export interface ApiFreeQuizzFreeQuizz extends Struct.CollectionTypeSchema {
   collectionName: 'free_quizzes';
   info: {
+    description: '';
     displayName: 'freeQuizz';
     pluralName: 'free-quizzes';
     singularName: 'free-quizz';
@@ -540,7 +542,7 @@ export interface ApiFreeQuizzFreeQuizz extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer;
+    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -570,6 +572,7 @@ export interface ApiFreedayFreeday extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
     free_kagel: Schema.Attribute.Relation<
       'oneToOne',
       'api::free-kagel.free-kagel'
@@ -610,7 +613,7 @@ export interface ApiKagelKagel extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer;
+    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
     kagelTimes: Schema.Attribute.Component<'kagel.kagel-time', true> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -639,6 +642,7 @@ export interface ApiProBlogProBlog extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -674,7 +678,7 @@ export interface ApiProDayProDay extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer;
+    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -709,7 +713,7 @@ export interface ApiQuizzQuizz extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.String & Schema.Attribute.Required;
+    dayId: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::quizz.quizz'> &
       Schema.Attribute.Private;
@@ -1224,7 +1228,6 @@ export interface PluginUsersPermissionsUser
     fitraatPayment: Schema.Attribute.Enumeration<['Complete', 'Not complete']> &
       Schema.Attribute.DefaultTo<'Not complete'>;
     gender: Schema.Attribute.Enumeration<['male', 'female']>;
-    kagelComplete: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1237,13 +1240,11 @@ export interface PluginUsersPermissionsUser
         minLength: 6;
       }>;
     phone: Schema.Attribute.BigInteger;
-    profileImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    profileImage: Schema.Attribute.Media<'images'>;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    quizComplete: Schema.Attribute.Boolean;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
+    restart: Schema.Attribute.Component<'restart.restart', true>;
     role: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.role'
@@ -1258,7 +1259,6 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 3;
       }>;
-    videoComplete: Schema.Attribute.Boolean;
   };
 }
 

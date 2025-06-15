@@ -75,15 +75,6 @@
       "type": "integer",
       "default": 1
     },
-    "videoComplete": {
-      "type": "boolean"
-    },
-    "kagelComplete": {
-      "type": "boolean"
-    },
-    "quizComplete": {
-      "type": "boolean"
-    },
     "gender": {
       "type": "enumeration",
       "enum": [
@@ -103,14 +94,17 @@
       "default": "Not complete"
     },
     "profileImage": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "restart": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restart.restart"
     }
   }
 }

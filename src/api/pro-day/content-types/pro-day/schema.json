@@ -12,7 +12,8 @@
   },
   "attributes": {
     "dayId": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "pro_blog": {
       "type": "relation",
@@ -38,12 +39,12 @@
       ]
     },
     "meditationVideo": {
-      "allowedTypes": [
-        "videos"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "videos"
+      ]
     }
   }
 }

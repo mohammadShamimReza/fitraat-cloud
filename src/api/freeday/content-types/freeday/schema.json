@@ -27,19 +27,23 @@
       "target": "api::free-quizz.free-quizz"
     },
     "regulerVideo": {
-      "allowedTypes": [
-        "videos"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "videos"
+      ]
     },
     "meditationVideo": {
-      "allowedTypes": [
-        "videos"
-      ],
       "type": "media",
       "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "dayId": {
+      "type": "integer",
       "required": true
     }
   }

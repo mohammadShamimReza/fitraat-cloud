@@ -11,15 +11,14 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "dayId": {
-      "type": "string",
-      "required": true
-    },
     "quizzess": {
       "type": "component",
       "repeatable": true,
       "component": "quiz.quiz-content",
       "required": true
+    },
+    "dayId": {
+      "type": "integer"
     }
   }
 }

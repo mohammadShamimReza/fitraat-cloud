@@ -11,7 +11,7 @@ export interface KagelKagelTime extends Struct.ComponentSchema {
     gap: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<30>;
-    serial: Schema.Attribute.String & Schema.Attribute.Required;
+    serial: Schema.Attribute.Integer & Schema.Attribute.Required;
     times: Schema.Attribute.Component<'kagel.squizz-and-stop', true> &
       Schema.Attribute.Required;
   };
@@ -59,6 +59,18 @@ export interface QuizQuizzOptions extends Struct.ComponentSchema {
   };
 }
 
+export interface RestartRestart extends Struct.ComponentSchema {
+  collectionName: 'components_restart_restarts';
+  info: {
+    description: '';
+    displayName: 'restart';
+  };
+  attributes: {
+    num: Schema.Attribute.Integer & Schema.Attribute.Required;
+    when: Schema.Attribute.Date & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -66,6 +78,7 @@ declare module '@strapi/strapi' {
       'kagel.squizz-and-stop': KagelSquizzAndStop;
       'quiz.quiz-content': QuizQuizContent;
       'quiz.quizz-options': QuizQuizzOptions;
+      'restart.restart': RestartRestart;
     }
   }
 }

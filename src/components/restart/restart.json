@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_restart_restarts",
+  "info": {
+    "displayName": "restart",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "num": {
+      "type": "integer",
+      "required": true
+    },
+    "when": {
+      "type": "date",
+      "required": true
+    }
+  }
+}

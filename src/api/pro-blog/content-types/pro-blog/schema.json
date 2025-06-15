@@ -35,6 +35,10 @@
       "type": "string",
       "default": "pro",
       "required": true
+    },
+    "dayId": {
+      "type": "integer",
+      "required": true
     }
   }
 }
