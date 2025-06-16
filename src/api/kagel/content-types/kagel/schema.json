@@ -17,15 +17,16 @@
       "component": "kagel.kagel-time",
       "required": true
     },
-    "serial": {
-      "type": "integer",
-      "required": false
-    },
     "dayId": {
       "type": "string",
-      "default": "day",
       "required": true,
       "unique": true
+    },
+    "pro_day": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pro-day.pro-day",
+      "inversedBy": "pro_kagel"
     }
   }
 }

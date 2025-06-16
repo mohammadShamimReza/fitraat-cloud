@@ -40,11 +40,13 @@
     "dayId": {
       "type": "string",
       "required": true,
-      "default": "day",
       "unique": true
     },
-    "serial": {
-      "type": "integer"
+    "free_day": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::freeday.freeday",
+      "inversedBy": "free_blog"
     }
   }
 }

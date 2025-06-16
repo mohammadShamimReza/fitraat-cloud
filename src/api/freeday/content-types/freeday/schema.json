@@ -14,17 +14,20 @@
     "free_blog": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::free-blog.free-blog"
+      "target": "api::free-blog.free-blog",
+      "inversedBy": "free_day"
     },
     "free_kagel": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::free-kagel.free-kagel"
+      "target": "api::free-kagel.free-kagel",
+      "mappedBy": "free_day"
     },
     "free_quizz": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::free-quizz.free-quizz"
+      "target": "api::free-quizz.free-quizz",
+      "mappedBy": "free_day"
     },
     "regulerVideo": {
       "type": "media",
@@ -45,11 +48,7 @@
     "dayId": {
       "type": "string",
       "required": true,
-      "default": "day",
       "unique": true
-    },
-    "serial": {
-      "type": "integer"
     }
   }
 }

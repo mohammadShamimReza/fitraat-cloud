@@ -11,10 +11,6 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "serial": {
-      "type": "integer",
-      "required": false
-    },
     "quizzess": {
       "type": "component",
       "repeatable": true,
@@ -22,9 +18,14 @@
     },
     "dayId": {
       "type": "string",
-      "default": "day",
       "required": true,
       "unique": true
+    },
+    "free_day": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::freeday.freeday",
+      "inversedBy": "free_quizz"
     }
   }
 }

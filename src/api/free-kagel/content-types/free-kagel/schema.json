@@ -19,12 +19,14 @@
     },
     "dayId": {
       "type": "string",
-      "default": "day",
       "required": true,
       "unique": true
     },
-    "serial": {
-      "type": "integer"
+    "free_day": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::freeday.freeday",
+      "inversedBy": "free_kagel"
     }
   }
 }

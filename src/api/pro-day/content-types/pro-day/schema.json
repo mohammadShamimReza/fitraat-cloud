@@ -11,24 +11,23 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "serial": {
-      "type": "integer",
-      "required": false
-    },
     "pro_blog": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::pro-blog.pro-blog"
+      "target": "api::pro-blog.pro-blog",
+      "mappedBy": "pro_day"
     },
     "pro_kagel": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::kagel.kagel"
+      "target": "api::kagel.kagel",
+      "mappedBy": "pro_day"
     },
     "pro_quizz": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::quizz.quizz"
+      "target": "api::quizz.quizz",
+      "mappedBy": "pro_day"
     },
     "regulerVideo": {
       "type": "media",
@@ -48,7 +47,6 @@
     },
     "dayId": {
       "type": "string",
-      "default": "day",
       "required": true,
       "unique": true
     }
