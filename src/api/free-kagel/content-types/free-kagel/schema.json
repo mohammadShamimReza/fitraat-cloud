@@ -11,15 +11,20 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "dayId": {
-      "type": "integer",
-      "required": true
-    },
     "kagelTimes": {
       "type": "component",
       "repeatable": true,
       "component": "kagel.kagel-time",
       "required": true
+    },
+    "dayId": {
+      "type": "string",
+      "default": "day",
+      "required": true,
+      "unique": true
+    },
+    "serial": {
+      "type": "integer"
     }
   }
 }

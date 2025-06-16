@@ -38,8 +38,13 @@
       "required": true
     },
     "dayId": {
-      "type": "integer",
-      "required": true
+      "type": "string",
+      "required": true,
+      "default": "day",
+      "unique": true
+    },
+    "serial": {
+      "type": "integer"
     }
   }
 }

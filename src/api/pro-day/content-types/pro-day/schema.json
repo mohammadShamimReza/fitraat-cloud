@@ -11,9 +11,9 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "dayId": {
+    "serial": {
       "type": "integer",
-      "required": true
+      "required": false
     },
     "pro_blog": {
       "type": "relation",
@@ -45,6 +45,12 @@
       "allowedTypes": [
         "videos"
       ]
+    },
+    "dayId": {
+      "type": "string",
+      "default": "day",
+      "required": true,
+      "unique": true
     }
   }
 }

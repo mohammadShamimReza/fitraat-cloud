@@ -17,8 +17,14 @@
       "component": "quiz.quiz-content",
       "required": true
     },
-    "dayId": {
+    "serial": {
       "type": "integer"
+    },
+    "dayId": {
+      "type": "string",
+      "default": "day",
+      "required": true,
+      "unique": true
     }
   }
 }

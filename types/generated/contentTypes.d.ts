@@ -475,7 +475,10 @@ export interface ApiFreeBlogFreeBlog extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    dayId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'day'>;
     image: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -485,6 +488,7 @@ export interface ApiFreeBlogFreeBlog extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    serial: Schema.Attribute.Integer;
     tag: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'free'>;
@@ -511,7 +515,10 @@ export interface ApiFreeKagelFreeKagel extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    dayId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'day'>;
     kagelTimes: Schema.Attribute.Component<'kagel.kagel-time', true> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -521,6 +528,7 @@ export interface ApiFreeKagelFreeKagel extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    serial: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -542,7 +550,10 @@ export interface ApiFreeQuizzFreeQuizz extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    dayId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'day'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -551,6 +562,7 @@ export interface ApiFreeQuizzFreeQuizz extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     quizzess: Schema.Attribute.Component<'quiz.quiz-content', true>;
+    serial: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -572,7 +584,14 @@ export interface ApiFreedayFreeday extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    dayId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'day'>;
+    free_blog: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::free-blog.free-blog'
+    >;
     free_kagel: Schema.Attribute.Relation<
       'oneToOne',
       'api::free-kagel.free-kagel'
@@ -581,7 +600,6 @@ export interface ApiFreedayFreeday extends Struct.CollectionTypeSchema {
       'oneToOne',
       'api::free-quizz.free-quizz'
     >;
-    freeBlog: Schema.Attribute.Relation<'oneToOne', 'api::free-blog.free-blog'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -592,6 +610,7 @@ export interface ApiFreedayFreeday extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     regulerVideo: Schema.Attribute.Media<'videos'> & Schema.Attribute.Required;
+    serial: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -613,13 +632,17 @@ export interface ApiKagelKagel extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    dayId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'day'>;
     kagelTimes: Schema.Attribute.Component<'kagel.kagel-time', true> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::kagel.kagel'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    serial: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -642,7 +665,10 @@ export interface ApiProBlogProBlog extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    dayId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'day'>;
     image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -651,6 +677,7 @@ export interface ApiProBlogProBlog extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    serial: Schema.Attribute.Integer;
     tag: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'pro'>;
@@ -678,7 +705,10 @@ export interface ApiProDayProDay extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    dayId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'day'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -692,6 +722,7 @@ export interface ApiProDayProDay extends Struct.CollectionTypeSchema {
     pro_quizz: Schema.Attribute.Relation<'oneToOne', 'api::quizz.quizz'>;
     publishedAt: Schema.Attribute.DateTime;
     regulerVideo: Schema.Attribute.Media<'videos'> & Schema.Attribute.Required;
+    serial: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -713,13 +744,17 @@ export interface ApiQuizzQuizz extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dayId: Schema.Attribute.Integer;
+    dayId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'day'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::quizz.quizz'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     quizzess: Schema.Attribute.Component<'quiz.quiz-content', true> &
       Schema.Attribute.Required;
+    serial: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

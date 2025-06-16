@@ -36,9 +36,15 @@
       "default": "pro",
       "required": true
     },
-    "dayId": {
+    "serial": {
       "type": "integer",
-      "required": true
+      "required": false
+    },
+    "dayId": {
+      "type": "string",
+      "default": "day",
+      "required": true,
+      "unique": true
     }
   }
 }

@@ -11,7 +11,7 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "freeBlog": {
+    "free_blog": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::free-blog.free-blog"
@@ -43,8 +43,13 @@
       ]
     },
     "dayId": {
-      "type": "integer",
-      "required": true
+      "type": "string",
+      "required": true,
+      "default": "day",
+      "unique": true
+    },
+    "serial": {
+      "type": "integer"
     }
   }
 }
