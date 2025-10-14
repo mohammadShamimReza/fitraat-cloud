@@ -1275,6 +1275,7 @@ export interface PluginUsersPermissionsUser
       'plugin::users-permissions.role'
     >;
     startDate: Schema.Attribute.Date;
+    tran_id: Schema.Attribute.String & Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
