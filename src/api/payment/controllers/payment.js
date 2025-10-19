@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 import { paymentService } from "../services/payment.js";
 
-const frontend_url = process.env.FRONTEND_URL;
-const backend_url = process.env.BACKEND_URL;
+const frontend_url = "https://www.fitraat.com/";
+const backend_url = "https://reliable-deer-385e3b81c0.strapiapp.com/";
 let tid = "asf";
 export default {
   async init(ctx) {
