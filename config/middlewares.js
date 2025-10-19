@@ -9,6 +9,7 @@ module.exports = [
         directives: {
           "frame-src": [
             "'self'",
+            "https://www.fitraat.com",
             "http://localhost:3000",
             "youtube.com",
             "www.youtube.com",
@@ -17,17 +18,23 @@ module.exports = [
             "facebook.com",
             "www.facebook.com",
           ],
-          "frame-ancestors": ["'self'", "http://localhost:3000"],
+          "frame-ancestors": [
+            "'self'",
+            "https://www.fitraat.com",
+            "http://localhost:3000",
+          ],
         },
       },
     },
   },
-  // "strapi::security",
- {
+  {
     name: "strapi::cors",
     config: {
       enabled: true,
-      origin: ["http://localhost:3000"], // 👈 your frontend origin
+      origin: [
+        "https://www.fitraat.com", // ✅ production frontend
+        "http://localhost:3000", // ✅ local dev
+      ],
       headers: ["*"],
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     },
