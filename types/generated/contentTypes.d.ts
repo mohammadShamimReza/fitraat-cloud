@@ -679,7 +679,6 @@ export interface ApiProBlogProBlog extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    viewCount: Schema.Attribute.BigInteger;
   };
 }
 
@@ -1239,6 +1238,7 @@ export interface PluginUsersPermissionsUser
   attributes: {
     age: Schema.Attribute.Integer;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    compliteDay: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;

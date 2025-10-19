@@ -109,6 +109,10 @@
     "tran_id": {
       "type": "string",
       "unique": true
+    },
+    "compliteDay": {
+      "type": "integer",
+      "default": 0
     }
   }
 }

@@ -3,9 +3,10 @@ import { paymentService } from "../services/payment.js";
 
 const frontend_url = process.env.FRONTEND_URL;
 const backend_url = process.env.BACKEND_URL;
-
+let tid = "asf";
 export default {
   async init(ctx) {
+    console.log("int fro payment");
     const {
       total_amount,
       currency,
@@ -20,12 +21,12 @@ export default {
       tran_id = uuidv4(),
       userId,
     } = ctx.request.body;
-
+    tid = tran_id;
     const data = {
       total_amount,
       currency,
       tran_id,
-      success_url: `${frontend_url}/api/payment/success/${userId}`,
+      success_url: `${backend_url}/api/payment/success/${userId}`,
       fail_url: `${frontend_url}/payment/fail/${userId}`,
       cancel_url: `${frontend_url}/payment/cancel/${userId}`,
       ipn_url: `${frontend_url}/payment/ipn`,
@@ -41,7 +42,7 @@ export default {
       cus_state: ctx.query.cus_state || "Dhaka",
       cus_postcode: ctx.query.cus_postcode || "1000",
       cus_country,
-      cus_phone,
+      cus_phone: "0157522",
       cus_fax: ctx.query.cus_fax || "00000000000",
       ship_name: ctx.query.ship_name || "Customer Name",
       ship_add1: ctx.query.ship_add1 || "Dhaka",
@@ -54,17 +55,17 @@ export default {
 
     try {
       const response = await paymentService.initTransaction(data);
-
-      await strapi.entityService.update(
-        "plugin::users-permissions.user",
-        userId,
-        {
-          data: {
-            fitraatPayment: "Complete",
-            tran_id,
-          },
-        }
-      );
+      console.log(response, "this is response andasdf");
+      // await strapi.entityService.update(
+      //   "plugin::users-permissions.user",
+      //   userId,
+      //   {
+      //     data: {
+      //       fitraatPayment: "Complete",
+      //       tran_id,
+      //     },
+      //   }
+      // );
 
       ctx.body = { url: response.GatewayPageURL, response };
     } catch (error) {
@@ -80,7 +81,11 @@ export default {
         "plugin::users-permissions.user",
         userId,
         {
-          data: { paid: true, startDate: new Date().toISOString() },
+          data: {
+            startDate: new Date().toISOString(),
+            fitraatPayment: "Complete",
+            tran_id: tid,
+          },
         }
       );
 
